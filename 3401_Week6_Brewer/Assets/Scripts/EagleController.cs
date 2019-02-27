@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class EagleController : MonoBehaviour
 {
+    public AudioSource flapSound;
+    public AudioSource hitSound;
     //refence to birds rigid body; holds variable
     public Rigidbody2D birdRB;
     //variable for Y velocity
@@ -25,6 +27,8 @@ public class EagleController : MonoBehaviour
         {
             //Debug.Log("Pressed");
             birdRB.velocity = new Vector2(birdRB.velocity.x, jumpSpeed);
+            flapSound.Play();
+           
             
         }
     }
@@ -33,6 +37,7 @@ public class EagleController : MonoBehaviour
     {
         //Debug.Log("Caw!");
         gameOverCanvas.SetActive(true);
+        hitSound.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
